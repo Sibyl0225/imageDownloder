@@ -80,7 +80,7 @@ public class JsoupParse {
 //			 System.exit(0);
 			//normalDownloadImg(imgs,3);		
 			
-	    	for (int i = 0; i < 5; i++) {			
+	    	for (int i = 0; i < 12; i++) {			
 	    		NormalImageDownloadSimple normalImage = new NormalImageDownloadSimple(i,filePath,queue);
 	    		normalImage.start();
 			}
