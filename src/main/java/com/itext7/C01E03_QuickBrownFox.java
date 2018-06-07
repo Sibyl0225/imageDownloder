@@ -1,13 +1,15 @@
 package com.itext7;
+
+
+import java.io.File;
+import java.io.IOException;
+
 import com.itextpdf.io.image.ImageDataFactory;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Image;
 import com.itextpdf.layout.element.Paragraph;
-
-import java.io.File;
-import java.io.IOException;
 
 /**
  * Simple image example.
@@ -35,12 +37,23 @@ public class C01E03_QuickBrownFox {
         Document document = new Document(pdf);
 
         // Compose Paragraph
-        Image fox = new Image(ImageDataFactory.create(FOX));
-        Image dog = new Image(ImageDataFactory.create(DOG));
+        
+        Image foxImage = new Image(ImageDataFactory.create(FOX));
+        Image dogImage = new Image(ImageDataFactory.create(DOG));
+        
+        foxImage = foxImage.scale(0.5f , 0.5f);
+        dogImage = dogImage.scale(1.5f , 1.5f);
+        
+//        BufferedImage dogBufferedImage = ImageIO.read(new FileInputStream(DOG));             //读取一幅图像到图像缓冲区
+//        dogBufferedImage = ImageUtil.resize(dogBufferedImage, 0.5);
+//        
+//        BufferedImage foxBufferedImage = ImageIO.read(new FileInputStream(FOX));  
+//        foxBufferedImage = ImageUtil.resize(foxBufferedImage, 0.5);
+
         Paragraph p = new Paragraph("The quick brown ")
-                .add(fox)
+                .add(foxImage)
                 .add(" jumps over the lazy ")
-                .add(dog);
+                .add(dogImage);
         // Add Paragraph to document
         document.add(p);
 

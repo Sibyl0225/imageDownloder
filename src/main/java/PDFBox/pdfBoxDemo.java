@@ -91,53 +91,50 @@ public class pdfBoxDemo {
 		String content = stripper.getText(document);
 		System.out.println(content);  
 		
-		
-		new Pdfh
-		
-
-              
-		  ArrayList<PDImageXObject> images = new ArrayList<PDImageXObject>();  
-          /** 文档页面信息 **/    
-          PDDocumentCatalog cata = document.getDocumentCatalog();    
-  		  PDPageTree pageTree = cata.getPages();
-  		  Iterator<PDPage> it = pageTree.iterator();
-  		  int pageConut=0;
-          while(it.hasNext())  
-          {    pageConut++;
-      
-              PDPage page = it.next(); 
-              if( null != page )    
-              {    
-                  PDResources pdRes = page.getResources();                  
-                  Iterator<COSName> xObjecIt = pdRes.getXObjectNames().iterator();
-                  while( xObjecIt.hasNext()){
-						COSName cosName = xObjecIt.next();
-						PDXObject xObject = pdRes.getXObject(cosName);
-//						// 是图片
-//						if (pdRes.isImageXObject(cosName)) {
-//							PDImageXObject pdxObject = (PDImageXObject) pdRes.getXObject(cosName);
-//						ImageIO.write( pdxObject.getImage(), pdxObject.getSuffix(),new File(imgSavePath + i + "."+pdxObject.getSuffix()));
+//		     
+//		  ArrayList<PDImageXObject> images = new ArrayList<PDImageXObject>();  
+//          /** 文档页面信息 **/    
+//          PDDocumentCatalog cata = document.getDocumentCatalog();    
+//  		  PDPageTree pageTree = cata.getPages();
+//  		  Iterator<PDPage> it = pageTree.iterator();
+//  		  int pageConut=0;
+//          while(it.hasNext())  
+//          {    pageConut++;
+//      
+//              PDPage page = it.next(); 
+//              if( null != page )    
+//              {    
+//                  PDResources pdRes = page.getResources();                  
+//                  Iterator<COSName> xObjecIt = pdRes.getXObjectNames().iterator();
+//                  while( xObjecIt.hasNext()){
+//						COSName cosName = xObjecIt.next();
+//						PDXObject xObject = pdRes.getXObject(cosName);
+////						// 是图片
+////						if (pdRes.isImageXObject(cosName)) {
+////							PDImageXObject pdxObject = (PDImageXObject) pdRes.getXObject(cosName);
+////						ImageIO.write( pdxObject.getImage(), pdxObject.getSuffix(),new File(imgSavePath + i + "."+pdxObject.getSuffix()));
+////						}
+//						if (xObject instanceof PDImageXObject) {
+//							images.add((PDImageXObject)xObject);
+//						} else if (xObject instanceof PDFormXObject) {
+//							PDResources resources = ((PDFormXObject) xObject).getResources();
+//							images.addAll(getImagesFromResources(resources));
+//						} else {
 //						}
-						if (xObject instanceof PDImageXObject) {
-							images.add((PDImageXObject)xObject);
-						} else if (xObject instanceof PDFormXObject) {
-							PDResources resources = ((PDFormXObject) xObject).getResources();
-							images.addAll(getImagesFromResources(resources));
-						} else {
-						}
-                  }
-			        
-              }    
-          } 
-      	  System.out.println("page数量:"+pageConut);
-          System.out.println("images图片数量:"+images.size());
-			for (int i = 0; i < images.size(); i++) {
-				PDImageXObject xobjct = (PDImageXObject) images.get(i);
-				BufferedImage image = xobjct.getImage();
-				if (image.getWidth() > 50 && image.getHeight() > 50) {
-				//	ImageIO.write(image, xobjct.getSuffix(), new File(imgSavePath + i + "." + xobjct.getSuffix()));
-				}
-			}
+//                  }
+//			        
+//              }    
+//          } 
+//      	  System.out.println("page数量:"+pageConut);
+//          System.out.println("images图片数量:"+images.size());
+//			for (int i = 0; i < images.size(); i++) {
+//				PDImageXObject xobjct = (PDImageXObject) images.get(i);
+//				BufferedImage image = xobjct.getImage();
+//				if (image.getWidth() > 50 && image.getHeight() > 50) {
+//				//	ImageIO.write(image, xobjct.getSuffix(), new File(imgSavePath + i + "." + xobjct.getSuffix()));
+//				}
+//			}
+		
       }catch( Exception e)    
       {    
           throw e;    
@@ -191,33 +188,7 @@ public class pdfBoxDemo {
       }    
       return date == null ? "" : date;    
   }  
-  
-  private static BufferedImage resize(BufferedImage source, int targetW,  int targetH) {  
-      int type=source.getType();  
-      BufferedImage target=null;  
-      double sx=(double)targetW/source.getWidth();  
-      double sy=(double)targetH/source.getHeight();  
-      if(sx>sy){  
-          sx=sy;  
-          targetW=(int)(sx*source.getWidth());  
-      }else{  
-          sy=sx;  
-          targetH=(int)(sy*source.getHeight());  
-      }  
-      if(type==BufferedImage.TYPE_CUSTOM){  
-          ColorModel cm=source.getColorModel();  
-               WritableRaster raster=cm.createCompatibleWritableRaster(targetW, targetH);  
-               boolean alphaPremultiplied=cm.isAlphaPremultiplied();  
-               target=new BufferedImage(cm,raster,alphaPremultiplied,null);  
-      }else{  
-          target=new BufferedImage(targetW, targetH,type);  
-      }  
-      Graphics2D g=target.createGraphics();  
-      g.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);  
-      g.drawRenderedImage(source, AffineTransform.getScaleInstance(sx, sy));  
-      g.dispose();  
-      return target;  
-  }  
+ 
       
   public static void main( String [] args ) throws Exception{    
       pdfParse("C:\\Users\\itbys\\Desktop\\yande.re.pdf","C:\\Users\\itbys\\Desktop\\yande\\1.");    
