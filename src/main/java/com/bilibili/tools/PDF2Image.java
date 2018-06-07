@@ -14,7 +14,7 @@ public class PDF2Image {
 
 	public static void main(String[] args) {
 		PropertyConfigurator.configure("src/main/resources/log4j.propertier"); 
-		pdf2Image("C:/Users/itbys/Desktop/vczh_Öªºõ.pdf", "C:/Users/itbys/Desktop", 160);  
+		pdf2Image("C:/Users/itbys/Desktop/vczh_Öªºõ.pdf", "C:/Users/itbys/Desktop", 180);  
 	}
 	
 	/*** 
@@ -56,6 +56,7 @@ public class PDF2Image {
                     imgFilePath.append(".png");  
                     File dstFile = new File(imgFilePath.toString());  
                     BufferedImage image = renderer.renderImageWithDPI(i, dpi);  
+                    //BufferedImage image = renderer.renderImage(i);
                     ImageIO.write(image, "png", dstFile); 
                     image.flush();
                 }  
