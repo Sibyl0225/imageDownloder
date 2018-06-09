@@ -121,10 +121,9 @@ public abstract class FileReaderTools {
 							}
 					}
 					
-					
-						
-					str = str.replaceAll("】", "]");
-					str = str.replaceAll("【", "[");
+					//去除 路径 中的 '/' 字符
+					str = CnCharConvertEnChar.filePathCustomFilter(str);	
+
 					System.out.println(key+":"+str);
 					                      
 					JSONObject jsonObject = new JSONObject();
@@ -156,10 +155,9 @@ public abstract class FileReaderTools {
 					if(key.equals("part")){
 							
 						String preTitle = fristObj.getString("title");
-						if(preTitle.contains("【")||preTitle.contains("】")){							
-							preTitle = preTitle.replaceAll("】", "]");
-							preTitle = preTitle.replaceAll("【", "[");
-						}
+						//去除 路径 中的 '/' 字符
+						preTitle = CnCharConvertEnChar.filePathCustomFilter(preTitle);
+						
 						String isContain = redisClient.shardedJedis.get(preTitle);
 						if(isContain!=null && redisClient.shardedJedis.exists(preTitle)){		
 							redisClient.shardedJedis.del(preTitle);

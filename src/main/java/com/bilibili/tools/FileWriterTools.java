@@ -64,7 +64,10 @@ public class FileWriterTools {
 			        			 bw.write("    {"); 
 			        		 }  
 			        		 bw.newLine();
-			        		 bw.write("        \""+key+"\":\""+obj.getString(key).toString()+"\"");
+			        		 
+			        		 //获取文件路径（不是文件名）  这里可作相应处理
+			        		 String val = obj.getString(key).toString();
+			        		 bw.write("        \""+key+"\":\""+val+"\"");
 			        		 if(j!=array.length-1) bw.write(","); 
 			        		 if(j==array.length-1){
 			        			 bw.newLine();
