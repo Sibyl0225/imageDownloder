@@ -38,18 +38,19 @@ public class Main {
 		}
 		System.out.println("ResourcePath:   "+path);
 		//ResourcePath:   C:/Users/itbys/workspace/yande.re/target/classes/
-*/		
-		System.exit(1);
+*/	
+		
+//		System.exit(1);
 
 			
-		 String filePath ="F:\\BiliBiliDownload";
+		 String filePath ="F:\\APK\\tv.danmaku.bili";
 		 
         //有s_开头的时候 ，放开注释再运行一次
 		// hasAnimations = true;
 		 
 		 Flags flags = Flags.getInstance();
 		 flags.setReverseFlag(false);
-		 flags.setHasAnimations(false);
+		 flags.setHasAnimations(true);
 		 RedisClient redisClient = new RedisClient();
 		 
 		 if(args.length >0){		 
