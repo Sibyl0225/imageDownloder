@@ -87,7 +87,7 @@
 		 <dependency>
 		   <groupId>junit</groupId>
 		   <artifactId>junit</artifactId>
-		   <version>4.0</version>
+		   <version>4.13.1</version>
 		 </dependency>
 		 
 		 <!-- Gson 2.3.1 --> 
